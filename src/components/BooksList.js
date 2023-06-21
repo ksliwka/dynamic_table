@@ -15,12 +15,20 @@ const BooksList = ({ books }) => {
       setSelectedPath([]);
     } else {
       setSelectedBook(book);
-      setSelectedPath([...selectedPath, book.title]);
+      const bookPath = [...selectedPath, book];
+      setSelectedPath(bookPath);
     }
   };
+
+  const handleBreadcrumbClick = (index) => {
+    const bookPath = selectedPath.slice(0, index + 1);
+    setSelectedPath(bookPath);
+    setSelectedBook(bookPath[index]);
+  };
+
   return (
     <div>
-      <Breadcrumb path={selectedPath} />
+      <Breadcrumb path={selectedPath} onBreadcrumbClick={handleBreadcrumbClick}/>
       <table>
         <thead>
           <tr>
