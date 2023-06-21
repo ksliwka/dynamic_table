@@ -1,17 +1,26 @@
 import Books from "./Books";
 
 const BooksList = ({ books }) => {
-    if (!books) {
-      return null;
-    }
-  
-    return (
-      <ul>
+  if (!books) {
+    return null;
+  }
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          {/* Add more table headers for other book properties */}
+        </tr>
+      </thead>
+      <tbody>
         {books.map((book) => (
-          <Books key={book.id} title={book.title} />
+          <Books key={book.id} book={book} />
         ))}
-      </ul>
-    );
-  };
+      </tbody>
+    </table>
+  );
+};
 
 export default BooksList;

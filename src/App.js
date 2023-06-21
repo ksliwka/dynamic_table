@@ -26,6 +26,7 @@ function App() {
         return {
           id: bookData.id,
           title: bookData.volumeInfo.title,
+          authors: bookData.volumeInfo.authors
         };
       });
       setBooks(transformedBooks);

@@ -1,10 +1,12 @@
 
 
-const Books = (props) => {
+const Books = ({book}) => {
     return (
-      <li>
-        <h2>{props.title}</h2>
-      </li>
+        <tr>
+        <td>{book.id}</td>
+        <td>{book.title}</td>
+        <td>{book.authors}</td>
+      </tr>
     );
   };
   
