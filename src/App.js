@@ -1,24 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect, useCallback, Fragment } from "react";
+import BooksList from './components/BooksList';
 
 function App() {
+
+  const apiKey = process.env.REACT_APP_API_KEY;
+
+  const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchBooksHandler = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=JavaScript&key=${apiKey}`
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+      const data = await response.json();
+
+      const transformedBooks = data.items.map((bookData) => {
+        return {
+          id: bookData.id,
+          title: bookData.volumeInfo.title,
+        };
+      });
+      setBooks(transformedBooks);
+    } catch (error) {
+      setError(error.message);
+    }
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchBooksHandler();
+  }, [fetchBooksHandler]);
+
+  let content = <p>Found no books.</p>;
+
+  if (books.length > 0) {
+    content = <BooksList books={books} />;
+  }
+
+  if (error) {
+    content = <p>{error}</p>;
+  }
+
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      {content}
+    </Fragment>
   );
 }
 
