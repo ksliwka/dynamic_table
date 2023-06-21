@@ -1,9 +1,8 @@
 import "./App.css";
 import { useState, useEffect, useCallback, Fragment } from "react";
-import BooksList from './components/BooksList';
+import BooksList from "./components/BooksList";
 
 function App() {
-
   const apiKey = process.env.REACT_APP_API_KEY;
 
   const [books, setBooks] = useState([]);
@@ -28,7 +27,8 @@ function App() {
           title: bookData.volumeInfo.title,
           authors: bookData.volumeInfo.authors,
           selfLink: bookData.selfLink,
-          pageCount: bookData.volumeInfo.pageCount
+          pageCount: bookData.volumeInfo.pageCount,
+          imageLinks: bookData.volumeInfo.imageLinks.thumbnail,
         };
       });
       setBooks(transformedBooks);
@@ -56,11 +56,7 @@ function App() {
     content = <p>Loading...</p>;
   }
 
-  return (
-    <Fragment>
-      {content}
-    </Fragment>
-  );
+  return <Fragment>{content}</Fragment>;
 }
 
 export default App;

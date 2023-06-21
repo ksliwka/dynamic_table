@@ -28,7 +28,10 @@ const BooksList = ({ books }) => {
 
   return (
     <div>
-      <Breadcrumb path={selectedPath} onBreadcrumbClick={handleBreadcrumbClick}/>
+      <Breadcrumb
+        path={selectedPath}
+        onBreadcrumbClick={handleBreadcrumbClick}
+      />
       <table>
         <thead>
           <tr>
@@ -56,6 +59,7 @@ const BooksList = ({ books }) => {
           <p>Authors: {selectedBook.authors}</p>
           <p>Self Link: {selectedBook.selfLink}</p>
           <p>Page Count: {selectedBook.pageCount}</p>
+          <img src={selectedBook.imageLinks}></img>
         </div>
       )}
     </div>
