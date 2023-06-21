@@ -1,8 +1,10 @@
 import Books from "./Books";
 import { useState } from "react";
+import Breadcrumb from "./Breadcrumb";
 
 const BooksList = ({ books }) => {
   const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedPath, setSelectedPath] = useState([]);
 
   if (!books) {
     return null;
@@ -10,12 +12,15 @@ const BooksList = ({ books }) => {
   const handleRowClick = (book) => {
     if (selectedBook === book) {
       setSelectedBook(null);
+      setSelectedPath([]);
     } else {
       setSelectedBook(book);
+      setSelectedPath([...selectedPath, book.title]);
     }
   };
   return (
     <div>
+      <Breadcrumb path={selectedPath} />
       <table>
         <thead>
           <tr>
