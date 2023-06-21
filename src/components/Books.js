@@ -1,26 +1,15 @@
-import { useState } from "react";
 
-const Books = ({ book, index }) => {
-  const [selectedRow, setSelectedRow] = useState(null);
+const Books = ({ book, isSelected, onRowClick }) => {
 
   const handleRowClick = () => {
-    if (selectedRow === index) {
-      setSelectedRow(null); 
-    } else {
-      setSelectedRow(index);
-    }
+    onRowClick(book);
   };
 
   return (
-    <tr
-      className={selectedRow === index ? "selected" : ""}
-      onClick={() => handleRowClick(index)}
-    >
+    <tr className={isSelected ? "selected" : ""} onClick={handleRowClick}>
       <td>{book.id}</td>
       <td>{book.title}</td>
       <td>{book.authors}</td>
-      <td>{book.selfLink}</td>
-      <td>{book.pageCount}</td>
     </tr>
   );
 };
