@@ -11,7 +11,7 @@ const BooksList = ({ books }) => {
         <tr>
           <th>ID</th>
           <th>Title</th>
-          {/* Add more table headers for other book properties */}
+          <th>Authors</th>
         </tr>
       </thead>
       <tbody>
