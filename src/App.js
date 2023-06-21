@@ -15,7 +15,7 @@ function App() {
     setError(null);
     try {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=JavaScript&key=${apiKey}`
+        `https://www.googleapis.com/books/v1/volumes?q=free-ebooks&key=${apiKey}`
       );
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -26,7 +26,9 @@ function App() {
         return {
           id: bookData.id,
           title: bookData.volumeInfo.title,
-          authors: bookData.volumeInfo.authors
+          authors: bookData.volumeInfo.authors,
+          selfLink: bookData.selfLink,
+          pageCount: bookData.volumeInfo.pageCount
         };
       });
       setBooks(transformedBooks);
