@@ -2,6 +2,7 @@ import Books from "./Books";
 import { useState } from "react";
 import Breadcrumb from "./Breadcrumb";
 import { Container } from "react-bootstrap";
+import classes from "./BooksList.module.css";
 
 const BooksList = ({ books }) => {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -34,16 +35,16 @@ const BooksList = ({ books }) => {
           path={selectedPath}
           onBreadcrumbClick={handleBreadcrumbClick}
         />
-        <table>
+        <h1 className={classes.title}>BOOKS</h1>
+        <table className={classes.table}>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Title</th>
               <th>Authors</th>
             </tr>
           </thead>
           <tbody>
-            {books.map((book, index) => (
+            {books.map((book) => (
               <Books
                 key={book.id}
                 book={book}

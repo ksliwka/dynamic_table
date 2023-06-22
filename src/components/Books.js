@@ -12,7 +12,6 @@ const Books = ({ book, isSelected, onRowClick }) => {
         className={`${isSelected ? "selected" : ""} ${classes.row}`}
         onClick={handleRowClick}
       >
-        <td>{book.id}</td>
         <td>{book.title}</td>
         <td>{book.authors}</td>
       </tr>

@@ -1,3 +1,29 @@
-.row{
-    border-bottom: 1px solid black;
+.table {
+  margin: 80px ;
+}
+
+.table th {
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+  padding: 0 10px 15px;
+}
+
+.row {
+  border-bottom: 1px solid #c2bcab;
+}
+
+.title {
+  margin-top: 80px;
+  font-size: 100px;
+  letter-spacing: 8px;
+  font-weight: 700;
+}
+
+.row td {
+  color: #8f8a79;
+  padding: 15px 10px;
+}
+
+.row:hover{
+    background-color: #C7D0BD;
 }
