@@ -1,5 +1,6 @@
 import classes from "./BooksList.module.css";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Books = ({ book, isSelected, onRowClick }) => {
   const handleRowClick = () => {
@@ -16,7 +17,7 @@ const Books = ({ book, isSelected, onRowClick }) => {
         <td>{book.authors}</td>
         <td>
           {isSelected ? (
-            <AiOutlineArrowUp className={classes.arrow}/>
+            <AiOutlineArrowUp className={classes.arrow} />
           ) : (
             <AiOutlineArrowDown className={classes.arrow} />
           )}
@@ -26,11 +27,31 @@ const Books = ({ book, isSelected, onRowClick }) => {
         <tr className={` ${classes.selectedDetails}`}>
           <td colSpan={3}>
             <div>
-              <h2>{book.title}</h2>
-              <img src={book.imageLinks} alt="Book Cover" />
-              <p>Self Link: {book.selfLink}</p>
-              <p>Page Count: {book.pageCount}</p>
-              <p>ID: {book.id}</p>
+              <Container>
+                <Row>
+                  <Col>
+                    <h2>{book.title}</h2>
+                    <Row>
+                      <Col>
+                        <p>{book.authors}</p>
+                        <p>Language: {book.language}</p>
+                        <p>Page Count: {book.pageCount}</p>
+                      </Col>
+                      <Col>
+                        <p>Categorie: {book.categorie}</p>
+                        <p>Published Date: {book.publishedDate}</p>
+                        <a href={book.infoLink}>More info</a>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col>
+                    <img src={book.imageLinks} alt="Book Cover" />
+                  </Col>
+                </Row>
+                <Row>
+                  <p>Description: {book.description}</p>
+                </Row>
+              </Container>
             </div>
           </td>
         </tr>

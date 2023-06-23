@@ -14,7 +14,7 @@ function App() {
     setError(null);
     try {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=free-ebooks&key=${apiKey}`
+        `https://www.googleapis.com/books/v1/volumes?q=free-ebooks&orderBy=newest&maxResults=40&key=${apiKey}`
       );
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -26,6 +26,11 @@ function App() {
           id: bookData.id,
           title: bookData.volumeInfo.title,
           authors: bookData.volumeInfo.authors,
+          description: bookData.volumeInfo.description,
+          language: bookData.volumeInfo.language,
+          infoLink: bookData.volumeInfo.infoLink,
+          categorie: bookData.volumeInfo.categories,
+          publishedDate: bookData.volumeInfo.publishedDate,
           selfLink: bookData.selfLink,
           pageCount: bookData.volumeInfo.pageCount,
           imageLinks: bookData.volumeInfo.imageLinks.thumbnail,
