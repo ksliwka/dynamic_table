@@ -8,8 +8,6 @@ const BooksList = ({ books }) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedPath, setSelectedPath] = useState([]);
 
-
-
   if (!books) {
     return null;
   }
@@ -60,6 +58,7 @@ const BooksList = ({ books }) => {
           </table>
         </div>
       </Container>
+
   );
 };
 

@@ -6,11 +6,10 @@ function App() {
   const apiKey = process.env.REACT_APP_API_KEY;
 
   const [books, setBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchBooksHandler = useCallback(async () => {
-    setIsLoading(true);
     setError(null);
     try {
       const response = await fetch(
@@ -40,7 +39,9 @@ function App() {
     } catch (error) {
       setError(error.message);
     }
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -57,13 +58,16 @@ function App() {
     content = <p>{error}</p>;
   }
 
-  if (isLoading) {
-    content = <p>Loading...</p>;
-  }
-
   return (
     <Fragment>
-      {content}
+      {isLoading && (
+        <div className="empty-rectangle">
+          <p className="loading">Loading...</p>
+        </div>
+      )}
+      <div className={`content ${isLoading ? "content-hidden" : ""}`}>
+        {content}
+      </div>
     </Fragment>
   );
 }

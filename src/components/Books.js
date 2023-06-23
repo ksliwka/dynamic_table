@@ -3,10 +3,7 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import { Container, Row, Col } from "react-bootstrap";
 import { gsap } from "gsap";
 import { useRef, useEffect } from "react";
-import CSSPlugin from "gsap/CSSPlugin";
 
-// Register the CSSPlugin with GSAP
-gsap.registerPlugin(CSSPlugin);
 
 const Books = ({ book, isSelected, onRowClick }) => {
   const rowRef = useRef(null);
@@ -16,7 +13,7 @@ const Books = ({ book, isSelected, onRowClick }) => {
     gsap.fromTo(
       rowElement,
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1.5, stagger: 0.1, ease: "back" }
+      { opacity: 1, y: 0, duration: 1.5, stagger: 0.1, ease: "back", delay: 1 }
     );
   }, []);
 
