@@ -8,7 +8,7 @@
   border-radius: none;
   border: none;
   box-shadow: none;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.2rem;
 }
 
@@ -17,4 +17,8 @@
   font-weight: 700;
   height: 1.2rem;
   width: auto;
+}
+
+.lastTitle {
+  font-weight: 700;
 }

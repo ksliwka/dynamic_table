@@ -26,13 +26,11 @@ const Books = ({ book, isSelected, onRowClick }) => {
         <tr className={` ${classes.selectedDetails}`}>
           <td colSpan={3}>
             <div>
-              <h2>Selected Book Details</h2>
-              <p>ID: {book.id}</p>
-              <p>Title: {book.title}</p>
-              <p>Authors: {book.authors}</p>
+              <h2>{book.title}</h2>
+              <img src={book.imageLinks} alt="Book Cover" />
               <p>Self Link: {book.selfLink}</p>
               <p>Page Count: {book.pageCount}</p>
-              <img src={book.imageLinks} alt="Book Cover" />
+              <p>ID: {book.id}</p>
             </div>
           </td>
         </tr>

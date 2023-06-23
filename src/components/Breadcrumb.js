@@ -8,7 +8,9 @@ const Breadcrumb = ({ path, onBreadcrumbClick }) => {
         <span key={index}>
           <button
             onClick={() => onBreadcrumbClick(index)}
-            className={classes.button}
+            className={`${classes.button} ${
+              index === path.length - 1 ? classes.lastTitle : ""
+            }`}
           >
             {book.title}
           </button>
