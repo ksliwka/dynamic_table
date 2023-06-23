@@ -1,5 +1,5 @@
 import classes from "./BooksList.module.css";
-import { Row, Col } from "react-bootstrap";
+import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 
 const Books = ({ book, isSelected, onRowClick }) => {
   const handleRowClick = () => {
@@ -14,9 +14,16 @@ const Books = ({ book, isSelected, onRowClick }) => {
       >
         <td>{book.title}</td>
         <td>{book.authors}</td>
+        <td>
+          {isSelected ? (
+            <AiOutlineArrowUp className={classes.arrow}/>
+          ) : (
+            <AiOutlineArrowDown className={classes.arrow} />
+          )}
+        </td>
       </tr>
       {isSelected && (
-        <tr className={`${classes.row} ${classes.selectedDetails}`}>
+        <tr className={` ${classes.selectedDetails}`}>
           <td colSpan={3}>
             <div>
               <h2>Selected Book Details</h2>

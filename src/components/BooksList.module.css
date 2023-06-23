@@ -1,5 +1,5 @@
 .table {
-  margin: 80px ;
+  margin: 80px;
 }
 
 .table th {
@@ -24,6 +24,11 @@
   padding: 15px 10px;
 }
 
-.row:hover{
-    background-color: #C7D0BD;
+.row:hover {
+  background-color: rgba(222, 226, 214);
 }
+
+.arrow {
+  color: rgba(252, 176, 126);
+}
+
