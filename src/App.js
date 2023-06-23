@@ -61,7 +61,11 @@ function App() {
     content = <p>Loading...</p>;
   }
 
-  return <Fragment>{content}</Fragment>;
+  return (
+    <Fragment>
+      {content}
+    </Fragment>
+  );
 }
 
 export default App;
