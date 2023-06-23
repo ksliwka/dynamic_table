@@ -31,11 +31,11 @@ const BooksList = ({ books }) => {
   return (
     <Container>
       <div>
+        <h1 className={classes.title}>BOOKS</h1>
         <Breadcrumb
           path={selectedPath}
           onBreadcrumbClick={handleBreadcrumbClick}
         />
-        <h1 className={classes.title}>BOOKS</h1>
         <table className={classes.table}>
           <thead>
             <tr>
