@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { useRef, useEffect } from "react";
 
 
-const Books = ({ book, isSelected, onRowClick }) => {
+const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
   const rowRef = useRef(null);
 
   useEffect(() => {
@@ -21,6 +21,11 @@ const Books = ({ book, isSelected, onRowClick }) => {
     onRowClick(book);
   };
 
+  const handleAuthorClick = (event) => {
+    event.stopPropagation();
+    onAuthorClick(book.authors[0]);
+  };
+
   return (
     <>
       <tr
@@ -29,7 +34,7 @@ const Books = ({ book, isSelected, onRowClick }) => {
         ref={rowRef}
       >
         <td>{book.title}</td>
-        <td>{book.authors}</td>
+        <td >{book.authors}</td>
         <td>
           {isSelected ? (
             <AiOutlineArrowUp className={classes.arrow} />
@@ -49,7 +54,7 @@ const Books = ({ book, isSelected, onRowClick }) => {
                     <h2>{book.title}</h2>
                     <Row>
                       <Col>
-                        <p>{book.authors}</p>
+                        <p onClick={handleAuthorClick} className={classes.authorLink}>{book.authors}</p>
                         <p>Language: {book.language}</p>
                         <p>Page Count: {book.pageCount}</p>
                       </Col>

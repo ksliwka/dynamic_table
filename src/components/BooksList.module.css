@@ -11,8 +11,6 @@
   border-bottom: 1px solid #c2bcab;
 }
 
-
-
 .title {
   margin-top: 120px;
   font-size: 100px;
@@ -66,4 +64,7 @@
   z-index: 999;
 }
 
-
+.authorLink {
+  text-decoration: underline;
+  color: rgba(252, 176, 126);
+}

@@ -4,10 +4,12 @@ import Breadcrumb from "./Breadcrumb";
 import { Container } from "react-bootstrap";
 import classes from "./BooksList.module.css";
 import { gsap } from "gsap";
+import AuthorModal from "./AuthorModal";
 
 const BooksList = ({ books }) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedPath, setSelectedPath] = useState([]);
+  const [selectedAuthor, setSelectedAuthor] = useState(null);
 
   const bookRef = useRef(null);
 
@@ -41,10 +43,22 @@ const BooksList = ({ books }) => {
     }
   };
 
+  const handleAuthorClick = (author) => {
+    setSelectedAuthor(author);
+  };
+
   const handleBreadcrumbClick = (index) => {
     const bookPath = selectedPath.slice(0, index + 1);
     setSelectedPath(bookPath);
     setSelectedBook(bookPath[index]);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedAuthor(null);
+  };
+
+  const getBooksByAuthor = (author) => {
+    return books.filter((book) => book.authors.includes(author));
   };
 
   return (
@@ -72,10 +86,16 @@ const BooksList = ({ books }) => {
                 book={book}
                 isSelected={selectedBook === book}
                 onRowClick={handleRowClick}
+                onAuthorClick={handleAuthorClick}
               />
             ))}
           </tbody>
         </table>
+        <AuthorModal
+          author={selectedAuthor}
+          books={getBooksByAuthor(selectedAuthor)}
+          onClose={handleCloseModal}
+        />
       </div>
     </Container>
   );
