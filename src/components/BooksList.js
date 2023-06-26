@@ -1,10 +1,10 @@
-import Books from "./Books";
 import { useState, useRef, useEffect } from "react";
-import Breadcrumb from "./Breadcrumb";
 import { Container } from "react-bootstrap";
-import classes from "./BooksList.module.css";
 import { gsap } from "gsap";
+import Breadcrumb from "./Breadcrumb";
+import Books from "./Books";
 import AuthorModal from "./AuthorModal";
+import classes from "./BooksList.module.css";
 
 const BooksList = ({ books, fetchMoreBooks }) => {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -88,7 +88,7 @@ const BooksList = ({ books, fetchMoreBooks }) => {
 
       setAuthorBooks(transformedBooks);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

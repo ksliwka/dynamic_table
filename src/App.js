@@ -85,7 +85,7 @@ function App() {
         return [...prevBooks, ...uniqueBooks];
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoadingMore(false);
     }
@@ -97,7 +97,7 @@ function App() {
     content = (
       <Fragment>
         <BooksList books={books} fetchMoreBooks={fetchMoreBooks} />
-        {isLoadingMore ? <p>Loading...</p> : ""}
+        {isLoadingMore && <p>Loading...</p>}
       </Fragment>
     );
   }
