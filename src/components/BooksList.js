@@ -10,6 +10,8 @@ const BooksList = ({ books }) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedPath, setSelectedPath] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
+  const [authorBooks, setAuthorBooks] = useState([]);
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const bookRef = useRef(null);
 
@@ -45,6 +47,7 @@ const BooksList = ({ books }) => {
 
   const handleAuthorClick = (author) => {
     setSelectedAuthor(author);
+    fetchAuthorBooks(author);
   };
 
   const handleBreadcrumbClick = (index) => {
@@ -55,10 +58,39 @@ const BooksList = ({ books }) => {
 
   const handleCloseModal = () => {
     setSelectedAuthor(null);
+    setAuthorBooks([]);
   };
 
-  const getBooksByAuthor = (author) => {
-    return books.filter((book) => book.authors && book.authors.includes(author));
+  const fetchAuthorBooks = async (author) => {
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}&orderBy=newest&maxResults=40&key=${apiKey}`
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+      const data = await response.json();
+
+      const transformedBooks = data.items.map((bookData) => {
+        return {
+          id: bookData.id,
+          title: bookData.volumeInfo.title,
+          authors: bookData.volumeInfo.authors,
+          description: bookData.volumeInfo.description,
+          language: bookData.volumeInfo.language,
+          infoLink: bookData.volumeInfo.infoLink,
+          categories: bookData.volumeInfo.categories,
+          publishedDate: bookData.volumeInfo.publishedDate,
+          selfLink: bookData.selfLink,
+          pageCount: bookData.volumeInfo.pageCount,
+          imageLinks: bookData.volumeInfo.imageLinks?.thumbnail,
+        };
+      });
+
+      setAuthorBooks(transformedBooks);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -93,7 +125,7 @@ const BooksList = ({ books }) => {
         </table>
         <AuthorModal
           author={selectedAuthor}
-          books={getBooksByAuthor(selectedAuthor)}
+          books={authorBooks}
           onClose={handleCloseModal}
         />
       </div>
