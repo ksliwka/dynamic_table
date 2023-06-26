@@ -79,7 +79,7 @@ const BooksList = ({ books }) => {
           description: bookData.volumeInfo.description,
           language: bookData.volumeInfo.language,
           infoLink: bookData.volumeInfo.infoLink,
-          categories: bookData.volumeInfo.categories,
+          categorie: bookData.volumeInfo.categories,
           publishedDate: bookData.volumeInfo.publishedDate,
           selfLink: bookData.selfLink,
           pageCount: bookData.volumeInfo.pageCount,
