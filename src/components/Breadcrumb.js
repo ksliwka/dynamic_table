@@ -1,4 +1,4 @@
-import classes from "./Breadcrumb.module.css";
+import classes from "./BreadCrumb.module.css";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 
