@@ -58,7 +58,7 @@ const BooksList = ({ books }) => {
   };
 
   const getBooksByAuthor = (author) => {
-    return books.filter((book) => book.authors.includes(author));
+    return books.filter((book) => book.authors && book.authors.includes(author));
   };
 
   return (
