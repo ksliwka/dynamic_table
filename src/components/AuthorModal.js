@@ -18,7 +18,7 @@ const AuthorModal = ({ author, books, isLoading, onClose }) => {
         books.map((book) => (
           <div key={book.id}>
             <Row className="mb-4">
-              <Col sm={2} className="me-4">
+              <Col sm={3} lg={2} className="me-4">
                 <img src={book.imageLinks} alt={book.title} />
               </Col>
               <Col>

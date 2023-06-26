@@ -4,7 +4,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { gsap } from "gsap";
 import { useRef, useEffect } from "react";
 
-
 const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
   const rowRef = useRef(null);
 
@@ -34,7 +33,7 @@ const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
         ref={rowRef}
       >
         <td>{book.title}</td>
-        <td >{book.authors}</td>
+        <td>{book.authors}</td>
         <td>
           {isSelected ? (
             <AiOutlineArrowUp className={classes.arrow} />
@@ -43,18 +42,26 @@ const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
           )}
         </td>
       </tr>
-      
+
       {isSelected && (
         <tr className={` ${classes.selectedDetails}`}>
           <td colSpan={3}>
             <div>
               <Container>
+                <h2>{book.title}</h2>
                 <Row>
                   <Col>
-                    <h2>{book.title}</h2>
-                    <Row>
-                      <Col>
-                        <p onClick={handleAuthorClick} className={classes.authorLink}>{book.authors}</p>
+                    <Row className="mb-4">
+                      <Col sm={4} md={3} lg={2}>
+                        <img src={book.imageLinks} alt="Book Cover" />
+                      </Col>
+                      <Col sm={3} md={3}>
+                        <p
+                          onClick={handleAuthorClick}
+                          className={classes.authorLink}
+                        >
+                          {book.authors}
+                        </p>
                         <p>Language: {book.language}</p>
                         <p>Page Count: {book.pageCount}</p>
                       </Col>
@@ -64,9 +71,6 @@ const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
                         <a href={book.infoLink}>More info</a>
                       </Col>
                     </Row>
-                  </Col>
-                  <Col>
-                    <img src={book.imageLinks} alt="Book Cover" />
                   </Col>
                 </Row>
                 <Row>
