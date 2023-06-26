@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# [Books website](https://books-bice-ten.vercel.app)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Overwiew](#overview)
+- [Key Features](#key-features)
+- [Technologies Used](#technologies-used)
+- [Requirements](#requirements)
+- [Installation and Usage](#installation-and-usage)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+The Books website is a platform that allows users to browse and showcase books fetched from the Google Books API. The website provides a user-friendly interface to explore and access detailed information about various books. Users can load books dynamically based on their preferences and requirements. Additionally, the website offers a search functionality to find books written by specific authors, enhancing the browsing experience. To improve user navigation, a breadcrumb feature has been implemented for easier exploration of book categories.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Fetching data from the Google Books API.
+- Breadcrumb functionality for easy navigation.
+- Responsive layout for optimal viewing on different devices.
+- Modal to display authors and their books.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- React DOM
+- React Bootstrap
+- React Icons
+- GSAP
+- Bootstrap
 
-### `npm run build`
+The project also utilizes an environment file to store the API key for the Google Books API. The API key is securely stored in the `.env` file, ensuring the protection of sensitive information. This file is not included in the repository and needs to be created separately.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To set up the API key, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Create a new file in the project root directory called `.env`.
+2. Add the following line to the `.env` file:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`REACT_APP_API_KEY=YOUR_API_KEY_HERE`
 
-### `npm run eject`
+Replace `YOUR_API_KEY_HERE` with your actual Google Books API key. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Save the `.env` file.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Requirements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Make sure you have the following installed:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Node.js
 
-## Learn More
+## Installation and Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository.
+2. Install the project dependencies by running the following command:
+   `npm install`
+3. Start the development server using the following command:
+   `npm start`
+4. Access the books website through your preferred web browser.
