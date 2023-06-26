@@ -69,3 +69,17 @@
   color: rgba(252, 176, 126);
 }
 
+.moreBtn{
+  color: rgba(252, 176, 126);
+  background-color: transparent;
+  font-weight: 600;
+  padding: 5px 10px;
+  text-decoration: none;
+  border: 1px solid rgba(252, 176, 126);
+  margin-bottom: 150px;
+}
+.moreBtn:hover, .moreBtn:active{
+  color: rgba(243, 248, 242);
+  background-color: rgba(252, 176, 126);
+}
+

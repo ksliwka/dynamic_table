@@ -6,7 +6,7 @@ import classes from "./BooksList.module.css";
 import { gsap } from "gsap";
 import AuthorModal from "./AuthorModal";
 
-const BooksList = ({ books }) => {
+const BooksList = ({ books, fetchMoreBooks }) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedPath, setSelectedPath] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
@@ -93,6 +93,7 @@ const BooksList = ({ books }) => {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <Container>
@@ -132,6 +133,7 @@ const BooksList = ({ books }) => {
         />
         {isLoading && <p>Loading...</p>}
       </div>
+      <button onClick={fetchMoreBooks} className={classes.moreBtn}>Load more</button>
     </Container>
   );
 };
