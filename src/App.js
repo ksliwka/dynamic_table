@@ -4,11 +4,11 @@ import BooksList from "./components/BooksList";
 
 function App() {
   const apiKey = process.env.REACT_APP_API_KEY;
-  
 
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const fetchBooks = useCallback(async () => {
     setError(null);
@@ -52,7 +52,7 @@ function App() {
   }, [fetchBooks]);
 
   const fetchMoreBooks = useCallback(async () => {
-    setIsLoading(true);
+    setIsLoadingMore(true);
     try {
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=free-ebooks&orderBy=newest&maxResults=40&startIndex=${books.length}&key=${apiKey}`
@@ -87,19 +87,19 @@ function App() {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
+      setIsLoadingMore(false);
     }
   }, [books.length, apiKey]);
-
-
-
- 
-
 
   let content = <p>Found no books.</p>;
 
   if (books.length > 0) {
-    content = <BooksList books={books}  fetchMoreBooks={fetchMoreBooks}/>;
+    content = (
+      <Fragment>
+        <BooksList books={books} fetchMoreBooks={fetchMoreBooks} />
+        {isLoadingMore ? <p>Loading...</p> : ""}
+      </Fragment>
+    );
   }
 
   if (error) {
@@ -121,5 +121,3 @@ function App() {
 }
 
 export default App;
-
-
