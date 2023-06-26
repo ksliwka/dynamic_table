@@ -67,6 +67,7 @@
 .authorLink {
   text-decoration: underline;
   color: rgba(252, 176, 126);
+  cursor: pointer;
 }
 
 .moreBtn{
