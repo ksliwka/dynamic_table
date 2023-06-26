@@ -9,13 +9,11 @@ const Breadcrumb = ({ path, onBreadcrumbClick, selectedBookRef  }) => {
   useEffect(() => {
     if (activeIndex !== null && breadcrumbRef.current && selectedBookRef.current) {
       if (activeIndex === path.length - 1) {
-        // Scroll to the selected book when the last breadcrumb is clicked
         selectedBookRef.current.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
       } else {
-        // Scroll to the breadcrumb when it is clicked
         breadcrumbRef.current.scrollIntoView({
           behavior: "smooth",
           block: "start",

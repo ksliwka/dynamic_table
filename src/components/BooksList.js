@@ -127,7 +127,7 @@ const BooksList = ({ books, fetchMoreBooks }) => {
               isSelected={selectedBook === book}
               onRowClick={handleRowClick}
               onAuthorClick={handleAuthorClick}
-              ref={selectedBook === book ? selectedBookRef : null} // Pass the selectedBookRef to the Books component when it is selected
+              ref={selectedBook === book ? selectedBookRef : null} 
             />
             ))}
           </tbody>
