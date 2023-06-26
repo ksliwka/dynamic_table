@@ -15,3 +15,31 @@
     color: rgba(243, 248, 242);
     background-color: rgba(252, 176, 126);
 }
+
+.link{
+    color: rgba(252, 176, 126);
+  font-weight: 600;
+  padding: 5px 10px;
+  text-decoration: none;
+  border: 1px solid rgba(252, 176, 126);
+}
+
+.link:hover {
+    color: rgba(243, 248, 242);
+    font-weight: 600;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: rgba(252, 176, 126);
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; 
+  }
+  
+  .spinner {
+    width: 3rem; 
+    height: 3rem; 
+  }

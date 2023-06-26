@@ -1,5 +1,5 @@
 import Books from "./Books";
-import { Fragment, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Breadcrumb from "./Breadcrumb";
 import { Container } from "react-bootstrap";
 import classes from "./BooksList.module.css";
@@ -11,6 +11,7 @@ const BooksList = ({ books }) => {
   const [selectedPath, setSelectedPath] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [authorBooks, setAuthorBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const apiKey = process.env.REACT_APP_API_KEY;
 
   const bookRef = useRef(null);
@@ -62,6 +63,7 @@ const BooksList = ({ books }) => {
   };
 
   const fetchAuthorBooks = async (author) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}&orderBy=newest&maxResults=40&key=${apiKey}`
@@ -76,13 +78,10 @@ const BooksList = ({ books }) => {
           id: bookData.id,
           title: bookData.volumeInfo.title,
           authors: bookData.volumeInfo.authors,
-          description: bookData.volumeInfo.description,
           language: bookData.volumeInfo.language,
           infoLink: bookData.volumeInfo.infoLink,
           categorie: bookData.volumeInfo.categories,
           publishedDate: bookData.volumeInfo.publishedDate,
-          selfLink: bookData.selfLink,
-          pageCount: bookData.volumeInfo.pageCount,
           imageLinks: bookData.volumeInfo.imageLinks?.thumbnail,
         };
       });
@@ -90,6 +89,8 @@ const BooksList = ({ books }) => {
       setAuthorBooks(transformedBooks);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -124,10 +125,12 @@ const BooksList = ({ books }) => {
           </tbody>
         </table>
         <AuthorModal
+          isLoading={isLoading}
           author={selectedAuthor}
           books={authorBooks}
           onClose={handleCloseModal}
         />
+        {isLoading && <p>Loading...</p>}
       </div>
     </Container>
   );
