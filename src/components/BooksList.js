@@ -15,6 +15,9 @@ const BooksList = ({ books, fetchMoreBooks }) => {
   const apiKey = process.env.REACT_APP_API_KEY;
 
   const bookRef = useRef(null);
+  const selectedBookRef = useRef(null);
+
+  
 
   useEffect(() => {
     const book = bookRef.current;
@@ -62,6 +65,8 @@ const BooksList = ({ books, fetchMoreBooks }) => {
     setAuthorBooks([]);
   };
 
+  
+
   const fetchAuthorBooks = async (author) => {
     setIsLoading(true);
     try {
@@ -104,6 +109,7 @@ const BooksList = ({ books, fetchMoreBooks }) => {
         <Breadcrumb
           path={selectedPath}
           onBreadcrumbClick={handleBreadcrumbClick}
+          selectedBookRef={selectedBookRef} 
         />
         <table className={classes.table}>
           <thead>
@@ -116,12 +122,13 @@ const BooksList = ({ books, fetchMoreBooks }) => {
           <tbody>
             {books.map((book) => (
               <Books
-                key={book.id}
-                book={book}
-                isSelected={selectedBook === book}
-                onRowClick={handleRowClick}
-                onAuthorClick={handleAuthorClick}
-              />
+              key={book.id}
+              book={book}
+              isSelected={selectedBook === book}
+              onRowClick={handleRowClick}
+              onAuthorClick={handleAuthorClick}
+              ref={selectedBook === book ? selectedBookRef : null} // Pass the selectedBookRef to the Books component when it is selected
+            />
             ))}
           </tbody>
         </table>

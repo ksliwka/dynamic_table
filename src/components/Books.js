@@ -1,10 +1,10 @@
-import classes from "./BooksList.module.css";
+import React, { forwardRef, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import { Container, Row, Col } from "react-bootstrap";
-import { gsap } from "gsap";
-import { useRef, useEffect } from "react";
+import classes from "./BooksList.module.css";
 
-const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
+const Books = forwardRef(({ book, isSelected, onRowClick, onAuthorClick }, ref) => {
   const rowRef = useRef(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
       <tr
         className={`${isSelected ? "selected" : ""} ${classes.row}`}
         onClick={handleRowClick}
-        ref={rowRef}
+        ref={ref || rowRef}
       >
         <td>{book.title}</td>
         <td>{book.authors}</td>
@@ -83,6 +83,6 @@ const Books = ({ book, isSelected, onRowClick, onAuthorClick }) => {
       )}
     </>
   );
-};
+});
 
 export default Books;
